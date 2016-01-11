@@ -1,7 +1,7 @@
 
 
 /**
- * <!-- Versie 1.0
+ * <!-- Versie 1.1
  *
  * -------------
  * - CHANGELOG -
@@ -96,6 +96,8 @@
  * @author marti
  *
  */
+ 
+
 public class Protocol {
 	public static class Client {
 		/**
@@ -109,8 +111,8 @@ public class Protocol {
 		 *     Content: <code>Player Name_</code> <code>modulesSupported_</code></p>
 		 *
 		 *     <ul>
-		 *         <li><code>Player Name</code>: <code>String</code> (15) - De naam van de speler die wil connecten.</li>
-		 *         <li><code>modulesSupported</code>: <code>Feature[]</code> - Een lijst van ondersteunde <code>modules</code>s, met standaard delimitter van elkaar gescheiden. <br>
+		 *         <li><code>HALLO_playername_features\n\n</code> (15) - De naam van de speler die wil connecten.</li>
+		 *          Een lijst van ondersteunde <code>modules</code>s, met standaard delimitter van elkaar gescheiden. <br>
 		 *             <code>Feature</code>: <code>String</code> (15) - Een unieke naam voor een feature. De volgende features zijn afgesproken:
 		 *             <p>chat_</p>
 		 *             <p>challenge_</p>
@@ -134,23 +136,19 @@ public class Protocol {
 
 		/**
 		 * <p>Invite <br>
-		 *     Name: <code>INVITE</code> <br>
+		 *     Name: <code>INVITE_player\n\n</code> <br>
 		 *     Descriptie: Packet dat verzonden wordt om een spel te starten met de aangegeven tegenstander. <br>
 		 *     Content: <code>&lt;Opponent Name&gt;</code>  [<code>&lt;BoardX&gt;</code> <code>&lt;BoardY&gt;</code> [<code>&lt;Settings&gt;</code>]]</p>
 		 *
 		 *     <ul>
 		 *         <li><code>Opponent Name</code>: <code>String</code> (15) - De naam van de speler die de invite moet ontvangen.</li>
-		 *         <li><code>BoardX</code>: <code>short</code> - De breedte van het spelbord. Standaardwaarde is 7. Minimaal 4.</li>
-		 *         <li><code>BoardY</code>: <code>short</code> - De hoogte van het spelbord. Standaardwaarde is 6. Minimaal 4.</li>
-		 *         <li><code>Settings</code>: Eigen inbreng - Verdere settings die je mee wilt geven in het spel. </li>
-		 *     </ul>
 		 */
 
 		public static final String INVITE = "INVITE";
 
 		/**
 		 * <p>Accept Invite <br>
-		 *     Name: <code>ACCEPT</code> <br>
+		 *     Name: <code>ACCEPT\n\n</code> <br>
 		 *     Descriptie: Packet door de uitgedaagde partij wordt verzonden om op een invite in te gaan. <br>
 		 *     Content: <code>&lt;Opponent Name&gt;</code></p>
 		 *
@@ -159,11 +157,11 @@ public class Protocol {
 		 *     </ul>
 		 */
 
-		public static final String ACCEPT_INVITE = "ACCEPT";
+		public static final String ACCEPTINVITE = "ACCEPTINVITE";
 
 		/**
 		 * <p>Decline Invite <br>
-		 *     Name: <code>DECLINE</code> <br>
+		 *     Name: <code>DECLINE\n\n</code> <br>
 		 *     Descriptie: Packet die door de uitgedaagde partij wordt verzonden om een invite af te slaan. <br>
 		 *     Content: <code>&lt;Opponent Name&gt;</code></p>
 		 *
@@ -172,7 +170,7 @@ public class Protocol {
 		 *     </ul>
 		 */
 
-		public static final String DECLINE_INVITE = "DECLINE";
+		public static final String DECLINEINVITE = "DECLINEINVITE";
 
 		/**
 		 * <p>Move <br>
@@ -181,7 +179,7 @@ public class Protocol {
 		 *     <p>elke steen wordt bescheven als volgt:</p>
 		 *     <p>charchar*int*int</p>\
 		 *     voorbeeld:
-		 *     Content: <code>charchar*int*int</code></p>
+		 *     Content: <code>charchar*int*int\n\n</code></p>
 		 *     <code>MAKEMOVE_AF*11*6_BF*11*7\n\n<code>
 		 *	
 		 */
@@ -192,7 +190,7 @@ public class Protocol {
 		 * <p>Chat <br>
 		 *     Name: <code>CHAT</code> <br>
 		 *     Descriptie: Bevat een chatmessage <br>
-		 *     Content: <code>&lt;Chat&gt;</code></p>
+		 *     Content: <code>CHAT_string\n\n;</code></p>
 		 *
 		 *     <ul>
 		 *         <li><code>Chat</code>: <code>String</code> (512) - De boodschap aan de server chat</li>
@@ -205,7 +203,7 @@ public class Protocol {
 		 * <p>Request Game <br>
 		 *     Name: <code>REQUESTGAME</code> <br>
 		 *     Descriptie: Vraagt de server om een game te joinen van een aantal personen<br>
-		 *     Content: integer</p>
+		 *     Content: <code>REQUESTGAME_integer\n\n<code>
 		 *     Valide input voor de integer zijn:
 		 *     0: Het maakt je niet uit hoeveel mensen je speelt
 		 *     1: match tegen een computerspeler
@@ -217,11 +215,11 @@ public class Protocol {
 		 *     REQUESTGAME_4\n\n
 		 */
 
-		public static final String REQUEST_GAME = "REQUESTGAME";
+		public static final String REQUESTGAME = "REQUESTGAME";
 
 		/**
 		 * <p>CHANGESTONE <br>
-		 *     Name: <code>CHANGSTONE</code> <br>
+		 *     Name: <code>CHANGESTONE</code> <br>
 		 *     Descriptie: Vraagt de server om een stenen in te wisselen<br>
 		 *     Content: <code>CHANGESTONE_steen_steen\n\n <code>
 
@@ -234,14 +232,14 @@ public class Protocol {
 		 * <p>GETLEADERBOARD<br>
 		 *     Name: <code>LEADERBOARD</code> <br>
 		 *     Descriptie: Vraag het leaderboard aan <br>
-		 *     Content: none</p>
-		 */
+		 *     Content: <code>GETLEADERBOARD\n\n<code>
+		 *     		 */
 		public static final String GETLEADERBOARD = "GETLEADERBOARD";
 		/**
 		 * <p>GETSTONESINBAG<br>
 		 *     Name: <code>STONESINBAG</code> <br>
 		 *     Descriptie: een commando waarmee de hoeveelheid stenen in de zak wordt gerequest <br>
-		 *     Content: <code>STONESINBAG\n\n</code></p>
+		 *     Content: <code>GETSTONESINBAG\n\n</code></p>
 		 *
 		 */
 
@@ -253,7 +251,7 @@ public class Protocol {
 		 * <p>Error <br>
 		 *     Name: <code>ERROR</code><br/>
 		 *     Descriptie: Zend een error naar de server toe.<br/>
-		 *     Content: <code>&lt;Error Code&gt;</code> <code>&lt;Message&gt;</code></p>
+		 *     Content: <code>ERROR_integer\n\n</code> 
 		 *	er zijn nog geen errors gedefinieerd voor de speler.
 		 */
 
@@ -378,7 +376,7 @@ public class Protocol {
 		 * <p>Leaderboard <br>
 		 *     Name: <code>LEADERBOARD</code> <br>
 		 *     Descriptie: Een packet waarin de statistieken van een aantal spelers worden verstuurd. <br>
-		 *     Content: <code>&lt;Player Statistics&gt;</code></p>
+		 *     Content: <code>LEADERBOARD_playername*integer_playername*integer\n\n</code></p>
 		 *
 		 *     <ul>
  		 *                 <li><code>Player Name</code>: <code>String</code> (15) - Naam van de speler in de betreffende statistiek</li>
@@ -388,7 +386,7 @@ public class Protocol {
 		 *     </ul>
 		 */
 
-		public static final String LEADERBOARD = "GETLEADERBOARD";
+		public static final String LEADERBOARD = "LEADERBOARD";
 
 
 
