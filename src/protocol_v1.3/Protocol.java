@@ -1,12 +1,21 @@
 
 
 /**
- * <!-- Versie 1.1
+ * <!-- Versie 1.2
  *
  * -------------
  * - CHANGELOG -
  * -------------
- *
+ * 
+ * Versie 1.2
+ * 	+ Chat commando updated 
+ * 		+ CHAT_playerName_message --peter verzijl
+ *  + Defined stone
+ *  	+ elke kleur en vorm hebben nu een char toegewezen gekregen -- peter verzijl
+ * Versie 1.1
+ * 
+ *  + consistentie voor de content
+ *  + verschillende spelfouten weggewerkt
  * Versie 0.042
  *
  * + Eerste versie protocol
@@ -67,11 +76,55 @@
  * <h3 id="leaderboard">Leaderboard</h3>
  *
  * <p>Het leaderboard is een extra optie er worden de laatste 10 highscores gemeld</p>
+ * 
+ *  * <h3 id="STENEN">STENEN</h3>
  *
- *
+ *		<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">char</th>
+    <th class="tg-yw4l">colors</th>
+    <th class="tg-yw4l">Shapes</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">A</td>
+    <td class="tg-yw4l">RED</td>
+    <td class="tg-yw4l">CIRCLE</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">B</td>
+    <td class="tg-yw4l">ORANGE</td>
+    <td class="tg-yw4l">CROSS</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">C</td>
+    <td class="tg-yw4l">YELLOW</td>
+    <td class="tg-yw4l">DIAMOND</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">D</td>
+    <td class="tg-yw4l">GREEN</td>
+    <td class="tg-yw4l">SQUARE</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">E</td>
+    <td class="tg-yw4l">BLUE</td>
+    <td class="tg-yw4l">STAR</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">F</td>
+    <td class="tg-yw4l">PURPLE</td>
+    <td class="tg-yw4l">PLUS</td>
+  </tr>
+</table>
  * <h3 id="errorcodes">Errorcodes</h3>
  *
- * <p> er zijn verschillende errorcodes, heb je een goede reden om een extra aan te vragen gooi het over de  </p>
+ * <p> er zijn verschillende errorcodes, heb je een goede reden om een extra aan te vragen gooi het over de github  </p>
  *
  *
  * <h3 id="over-delimiters">Over Delimiters</h3>
@@ -190,11 +243,8 @@ public class Protocol {
 		 * <p>Chat <br>
 		 *     Name: <code>CHAT</code> <br>
 		 *     Descriptie: Bevat een chatmessage <br>
-		 *     Content: <code>CHAT_string\n\n;</code></p>
+		 *     Content: <code>CHAT_playerName_message\n\n;</code></p>
 		 *
-		 *     <ul>
-		 *         <li><code>Chat</code>: <code>String</code> (512) - De boodschap aan de server chat</li>
-		 *     </ul>
 		 */
 
 		public static final String CHAT = "CHAT";
