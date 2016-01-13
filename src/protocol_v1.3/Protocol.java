@@ -149,7 +149,31 @@
  * @author marti
  *
  */
- 
+
+ public enum StoneColor{
+	 RED('A'), ORANGE('B'), YELLOW('C'), GREEN('D'), BLUE('E'), PURPLE('F');
+		
+		private char value;		
+		private StoneColor(char value){
+			this.value = value;
+		}
+		
+		public char getChar() {
+			return this.value();
+		}
+ }
+ public enum StoneSymbol{
+	 CIRCLE('A'), CROSS('B'), DIAMOND('C'), CUBE('D'), STAR('E'), PLUS('F');
+	 
+		private char value;		
+		private StoneSymbol(char value){
+			this.value = value;
+		}
+		
+		public char getChar() {
+			return this.value();
+		}
+ }
 
 public class Protocol {
 	public static class Client {
