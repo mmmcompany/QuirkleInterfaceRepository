@@ -1,7 +1,7 @@
 
 
 /**
- * <!-- Versie 1.3
+ * <!-- Versie 1.3.1
  *
  * -------------
  * - CHANGELOG -
@@ -349,7 +349,7 @@ public class Protocol {
 		 *     5: notchallengable
 		 *     6: challengerefused
 		 *     7: invalidmove
-		 *
+		 */
 
 		public static final String ERROR = "ERROR";
 
