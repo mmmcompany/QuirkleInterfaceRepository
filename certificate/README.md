@@ -3,13 +3,14 @@ Voor de mensen die de security feature willen implementeren, vandaag is tijdens 
 
 Hint: bij mij werkte het niet om the trust/keyStore via de commandline te zetten, om het programmatisch toe doen voeg deze code toe voor het starten van de server/client:
 
-        ```java// SERVER SIDE
-        // Initialize and set certificate credentials for SSL connection
-        System.setProperty("javax.net.ssl.keyStore", System.getProperty("user.dir").replace("src", "") + "/certs/keystore.jks");
-        System.setProperty("javax.net.ssl.keyStorePassword", "SSR0CKS");
+```java
+// SERVER SIDE
+// Initialize and set certificate credentials for SSL connection
+System.setProperty("javax.net.ssl.keyStore", System.getProperty("user.dir").replace("src", "") + "/certs/keystore.jks");
+System.setProperty("javax.net.ssl.keyStorePassword", "SSR0CKS");
 
-        // CLIENT SIDE
-        // Set needed trustStore properties in order to connect to SSLSocket
-        System.setProperty("javax.net.ssl.trustStore", System.getProperty("user.dir").replace("src", "") + "/certs/keystore.jks");
-        System.setProperty("javax.net.ssl.trustStorePassword", "SSR0CKS");
-        ```
+// CLIENT SIDE
+// Set needed trustStore properties in order to connect to SSLSocket
+System.setProperty("javax.net.ssl.trustStore", System.getProperty("user.dir").replace("src", "") + "/certs/keystore.jks");
+System.setProperty("javax.net.ssl.trustStorePassword", "SSR0CKS");```
+```
