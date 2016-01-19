@@ -1,11 +1,18 @@
 
 
 /**
- * <!-- Versie 1.3.1
+ * <!-- Versie 1.3.2
  *
  * -------------
  * - CHANGELOG -
  * -------------
+ * 
+ * Versie 1.3.2
+ * 
+ * + fixed verkeerde delimitter MAKEMOVE - Rosalyn
+ * + general errorcode 8 - JasperGerth & StephanMB
+ *
+ * 
  * Versie 1.3
  * + hallo commando overbodige tekst verwijderd
  * + error messages functionaliteit toegevoegd
@@ -237,10 +244,10 @@ public class Protocol {
 		 *     Name: <code>MAKEMOVE</code> <br>
 		 *     Descriptie: de steen en locatie combinatie waar de steen neergelegd wordt <br>
 		 *     <p>elke steen wordt bescheven als volgt:</p>
-		 *     <p>charchar*int*int</p>\
+		 *     <p>charchar_int*int</p>\
 		 *     voorbeeld:
-		 *     Content: <code>charchar*int*int\n\n</code></p>
-		 *     <code>MAKEMOVE_AF*11*6_BF*11*7\n\n<code>
+		 *     Content: <code>charchar_int*int\n\n</code></p>
+		 *     <code>MAKEMOVE_AF_11*6_BF_11*7\n\n<code>
 		 *	
 		 */
 
@@ -349,6 +356,7 @@ public class Protocol {
 		 *     5: notchallengable
 		 *     6: challengerefused
 		 *     7: invalidmove
+		 *     8: generalerror
 		 */
 
 		public static final String ERROR = "ERROR";
@@ -457,6 +465,8 @@ public class Protocol {
 		 * <p>De verschillende features die optioneel zijn geimplementeerd kunnen worden.</p>
 		 *
 		 * <p>Let op! Het protocol voor <code>SECURITY</code> is nog niet vastgelegd.
+		 * Dit wordt een SSL certificaat implementatie.
+		 * Het certificaat wordt later bijgevoegd aan het protocol op github.
 */
 		public static final String CHAT = "CHAT";
 		public static final String LEADERBOARD = "LEADERBOARD";
