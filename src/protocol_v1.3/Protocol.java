@@ -10,6 +10,7 @@
  * 
  * +verduidelijking commando server MOVE aangaande delimitter gebruik - Thomas & Niek
  * +verduidelijking volgorde stenen MOVE & MAKEMOVE
+ * +SECURITY implementation toegevoegd
  * Versie 1.3.2
  * 
  * + fixed verkeerde delimitter MAKEMOVE - Rosalyn
