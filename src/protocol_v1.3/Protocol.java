@@ -1,12 +1,15 @@
 
 
 /**
- * <!-- Versie 1.3.2
+ * <!-- Versie 1.3.3
  *
  * -------------
  * - CHANGELOG -
  * -------------
+ * Versie 1.3.3
  * 
+ * +verduidelijking commando server MOVE aangaande delimitter gebruik - Thomas & Niek
+ * +verduidelijking volgorde stenen MOVE & MAKEMOVE
  * Versie 1.3.2
  * 
  * + fixed verkeerde delimitter MAKEMOVE - Rosalyn
@@ -157,7 +160,7 @@ bij een gelijke score wordt er een willekeurige speler gekozen.
  *
  * <p>Als delimiter tussen argumenten gebruiken wij een underscore (<code>_<\code>) omdat dit makkelijk en handig is.</p>
  * <p>Als delimiter binnen een argument gebruiken wij een sterretje (<code>*<\code>) omdat dit makkelijk en handig is.</p>
-
+ * de tweede delimitter wordt gebruikt om de integers in een makemove te scheiden.
 
  *
  *
@@ -240,14 +243,16 @@ public class Protocol {
 		public static final String DECLINEINVITE = "DECLINEINVITE";
 
 		/**
-		 * <p>Move <br>
+		 * <p>MAKEMOVE<br>
 		 *     Name: <code>MAKEMOVE</code> <br>
 		 *     Descriptie: de steen en locatie combinatie waar de steen neergelegd wordt <br>
+		 *     
 		 *     <p>elke steen wordt bescheven als volgt:</p>
 		 *     <p>charchar_int*int</p>\
 		 *     voorbeeld:
 		 *     Content: <code>charchar_int*int\n\n</code></p>
 		 *     <code>MAKEMOVE_AF_11*6_BF_11*7\n\n<code>
+		 *     Als er meerdere stenen in een beurt worden gelegd is de de eerste steen de eerste in het commando en de laatste de laatste in het commando.
 		 *	
 		 */
 
@@ -402,11 +407,14 @@ public class Protocol {
 
 		/**
 		 * <p>MOVE<br>
-		 *     Name: <code>REQUEST</code> <br>
+		 *     Name: <code>MOVE</code> <br>
 		 *     Descriptie: een commando om aan te geven welke move gemaakt door wie en welke speler nu aan de beurt is <br>
 		 *     Content: <p>MOVE_player_playernext_moves\n\n</p>
-		 *     er kunnen meerdere moves gemaakt worden, deze worden gedelimit door standaarddelimiter
-		 *     de informatie in de move wordt gedelimit door standaarddelimiter2
+		 *     Example: <p>MOVE_sjaak_piet_AF_11*6_BF_11*7\n\n
+		 *     Er kunnen meerdere moves gemaakt worden, deze worden gedelimit door standaarddelimiter
+		 *     De integers in de move wordt gedelimit door standaarddelimiter2
+		 *	   Als er meerdere stenen in een beurt worden gelegd is de de eerste steen de eerste in het commando en de laatste de laatste in het commando.
+
 		 */
 
 		public static final String MOVE = "MOVE";
