@@ -1,11 +1,16 @@
 
 
 /**
- * <!-- Versie 1.3.3
+ * <!-- Versie 1.3.4
  *
  * -------------
  * - CHANGELOG -
  * -------------
+ * 
+ * Versie 1.3.4
+ * 
+ * + correcte delimiter implemented binnen commando's - Rosalyn
+ * 		-example: move & makemove
  * Versie 1.3.3
  * 
  * +verduidelijking commando server MOVE aangaande delimitter gebruik - Thomas & Niek
@@ -160,7 +165,7 @@ bij een gelijke score wordt er een willekeurige speler gekozen.
  * <p>Ik heb gekozen voor een dubbele carriage return (<code>\n\n</code>) als delimiter <p>
  *
  * <p>Als delimiter tussen argumenten gebruiken wij een underscore (<code>_<\code>) omdat dit makkelijk en handig is.</p>
- * <p>Als delimiter binnen een argument gebruiken wij een sterretje (<code>*<\code>) omdat dit makkelijk en handig is.</p>
+ * <p>Als tweede delimiter binnen een argument gebruiken wij een sterretje (<code>*<\code>) omdat dit makkelijk en handig is.</p>
  * de tweede delimitter wordt gebruikt om de integers in een makemove te scheiden.
 
  *
@@ -249,10 +254,10 @@ public class Protocol {
 		 *     Descriptie: de steen en locatie combinatie waar de steen neergelegd wordt <br>
 		 *     
 		 *     <p>elke steen wordt bescheven als volgt:</p>
-		 *     <p>charchar_int*int</p>\
+		 *     <p>charchar*int*int</p>\
 		 *     voorbeeld:
-		 *     Content: <code>charchar_int*int\n\n</code></p>
-		 *     <code>MAKEMOVE_AF_11*6_BF_11*7\n\n<code>
+		 *     Content: <code>charchar*int*int\n\n</code></p>
+		 *     <code>MAKEMOVE_AF*11*6_BF*11*7\n\n<code>
 		 *     Als er meerdere stenen in een beurt worden gelegd is de de eerste steen de eerste in het commando en de laatste de laatste in het commando.
 		 *	
 		 */
@@ -292,7 +297,7 @@ public class Protocol {
 		 *     Name: <code>CHANGESTONE</code> <br>
 		 *     Descriptie: Vraagt de server om een stenen in te wisselen<br>
 		 *     Content: <code>CHANGESTONE_steen_steen\n\n <code>
-
+				example: CHANGESTONE_AE_AA\n\n
 		 */
 
 		public static final String CHANGESTONE = "CHANGESTONE";
@@ -411,10 +416,12 @@ public class Protocol {
 		 *     Name: <code>MOVE</code> <br>
 		 *     Descriptie: een commando om aan te geven welke move gemaakt door wie en welke speler nu aan de beurt is <br>
 		 *     Content: <p>MOVE_player_playernext_moves\n\n</p>
-		 *     Example: <p>MOVE_sjaak_piet_AF_11*6_BF_11*7\n\n
+		 *     Example: <p>MOVE_sjaak_piet_AF*11*6_BF*11*7\n\n
 		 *     Er kunnen meerdere moves gemaakt worden, deze worden gedelimit door standaarddelimiter
-		 *     De integers in de move wordt gedelimit door standaarddelimiter2
-		 *	   Als er meerdere stenen in een beurt worden gelegd is de de eerste steen de eerste in het commando en de laatste de laatste in het commando.
+		 *     De charchar worden gescheiden van de integers met standaarddelimter2 "*".
+		 *     De integers worden van elkaar gescheiden met standaarddelimiter2 "*"
+		 *     de individuele gelegde stenen worden gescheiden door standaarddelimter 1 "_" .
+		 *     Als er meerdere stenen in een beurt worden gelegd is de de eerste steen de eerste in het commando en de laatste de laatste in het commando.
 
 		 */
 
