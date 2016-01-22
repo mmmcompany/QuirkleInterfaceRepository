@@ -1,9 +1,13 @@
 /**
- * <!-- Versie 1.3.5
+ * <!-- Versie 1.3.6
  *
  * -------------
  * - CHANGELOG -
  * -------------
+ * Versie 1.3.5
+ * 
+ * +delimitters voor optionele modules
+ * 
  * 
  * Versie 1.3.5
  * + fix issue #13, onduidelijkheid over GAME_END argumenten.
@@ -264,6 +268,10 @@ public class Protocol {
 		 * server <br>
 		 * Content: <code>HALLO_PlayerName_modulesSupported</code>
 		 * </p>
+		 * 
+		 * example:
+		 * HALLO_Piet_CHAT*SECURITY\n\n
+		 * modules staan in willekeurige volgorde gedelimited door standaard delimiter 2
 		 *
 		 * 
 		 */
